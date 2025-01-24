@@ -6,12 +6,10 @@
         {
             InitializeComponent();
 
-            var navPage = new NavigationPage(new MinhaPagina());
+            var page = new NavigationPage(new GridLayoutDemo());
+            page.BarBackground = Colors.DarkBlue;
 
-            navPage.BarBackground = Colors.Blue;
-            navPage.BarTextColor = Colors.Beige;
-
-            MainPage = new TabbedPageDemo();
+            MainPage = page;
         }
     }
 }
