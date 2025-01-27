@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiDemo.TabbedPageDemo"
              Title="TabbedPageDemo"
-            SelectedTabColor="White">
+            SelectedTabColor="Blue">
     <ContentPage Title="Pag. 1" IconImageSource="dotnet_bot"></ContentPage>
     <ContentPage Title="Pag. 2"></ContentPage>
     <ContentPage Title="Pag. 3"></ContentPage>

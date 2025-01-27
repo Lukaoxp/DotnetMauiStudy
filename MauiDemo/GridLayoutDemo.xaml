@@ -28,9 +28,33 @@
         <Label Text="Linha9" Grid.Row="2" Grid.Column="2" BackgroundColor="SlateBlue" />
     </Grid>-->
 
-    <Grid RowDefinitions="2*,*,50" ColumnDefinitions="*,*">
+    <!--<Grid RowDefinitions="2*,*,50" ColumnDefinitions="*,*" Padding="10" ColumnSpacing="10" RowSpacing="10" BackgroundColor="Black">
         <BoxView Color="Crimson"/>
-        <BoxView  Grid.Column="1" Color="Blue"/>
-        <BoxView Grid.Row="2" Grid.Column="1" Color="Green"/>
+        <Label Text="Row 0, Column 0" HorizontalOptions="Center" VerticalOptions="Center"/>
+        
+        <BoxView  Grid.Column="1" Color="Aqua"/>
+        <Label Text="Row 0, Column 1" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+        
+        <BoxView Grid.Row="1" Grid.Column="0" Color="Teal"/>
+        <Label Text="Row 1, Column 0" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"/>
+        
+        <BoxView Grid.Row="1" Grid.Column="1" Color="Gold"/>
+        <Label Text="Row 1, Column 1" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+        <BoxView Grid.Row="2" Grid.Column="0" Color="SteelBlue" Grid.ColumnSpan="2"/>
+        <Label Text="Row 2, Column 0 and 1" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+    </Grid>-->
+
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" RowDefinitions="*,50,50,Auto,40,40,*">
+            <Grid Grid.Row="5" ColumnDefinitions="*, Auto, *">
+            </Grid>
+        </Grid>
     </Grid>
+    
 </ContentPage>

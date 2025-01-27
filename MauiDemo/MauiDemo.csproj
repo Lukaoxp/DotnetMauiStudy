@@ -66,6 +66,9 @@
 	  <Compile Update="FlyoutPageDemo.xaml.cs">
 	    <DependentUpon>FlyoutPageDemo.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Oraculo.xaml.cs">
+	    <DependentUpon>Oraculo.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,6 +79,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MinhaPagina.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Oraculo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="StackLayoutDemo.xaml">
