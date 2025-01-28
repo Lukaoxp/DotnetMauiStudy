@@ -6,10 +6,11 @@
         {
             InitializeComponent();
 
-            var page = new NavigationPage(new GridLayoutDemo());
-            page.BarBackground = Colors.DarkBlue;
+            //var page = new NavigationPage(new GridLayoutDemo());
+            //page.BarBackground = Colors.DarkBlue;
 
-            MainPage = page;
+            //MainPage = page;
+            MainPage = new NavigationPage(new FlexlayoutDemo());
         }
     }
 }
