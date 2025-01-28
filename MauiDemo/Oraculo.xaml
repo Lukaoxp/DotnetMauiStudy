@@ -5,10 +5,10 @@
              Title="Oraculo">
     <VerticalStackLayout>
         <Label HorizontalOptions="Center" FontSize="Large">O Oráculo</Label>
-        <Image Source="oraculo.jpg" HeightRequest="300" WidthRequest="100"></Image>
+        <Image Source="oraculo.jpg" HeightRequest="300" WidthRequest="200"></Image>
         <Label HorizontalOptions="Center" FontSize="Medium">Qual a sua pergunta?</Label>
         <Entry HorizontalOptions="Center"></Entry>
-        <Button HorizontalOptions="Center" Text="Enviar pergunta" Clicked="Button_Clicked"></Button>
+        <Button Margin="0, 0, 0, 20" HorizontalOptions="Center" Text="Enviar pergunta" Clicked="Button_Clicked"></Button>
         <VerticalStackLayout IsVisible="False" x:Name="Resposta">
             <Label HorizontalOptions="Center" TextColor="Red" FontSize="Medium">O oráculo revela:</Label>
             <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large">50/50</Label>
