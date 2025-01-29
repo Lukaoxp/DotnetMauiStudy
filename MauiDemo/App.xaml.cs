@@ -10,7 +10,7 @@
             //page.BarBackground = Colors.DarkBlue;
 
             //MainPage = page;
-            MainPage = new NavigationPage(new FlexlayoutDemo());
+            MainPage = new NavigationPage(new AbsoluteLayoutDemo());
         }
     }
 }
