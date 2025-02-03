@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiControls.Pages.MauiPresentationControls"
+             Title="Maui Presentation Controls">
+    
+    <ScrollView>
+    <VerticalStackLayout Padding="10" Spacing="15">
+
+        <BoxView Color="CornflowerBlue"
+                 CornerRadius="20"
+                 WidthRequest="160"
+                 HeightRequest="160"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start" />
+
+        <Label Text="Bem-Vindo &#10; ao .NET MAUI!"
+               CharacterSpacing="2"
+               BackgroundColor="Crimson"
+               TextColor="Black"
+               HorizontalTextAlignment="Center"
+               FontSize="Large"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+
+        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+               FontSize="Medium"
+               LineHeight="1"
+               MaxLines="2" />
+
+        <Label Text="Texto sublinhado"  TextDecorations="Underline"/>
+        <Label Text="Texto tachado" TextDecorations="Strikethrough" />
+        <Label Text="Texto sublinhado e tachado" TextDecorations="Underline,Strikethrough" />
+        <Label Text="Texto maiusculo"  TextTransform="Uppercase"/>
+
+        <Ellipse Fill="Gold"
+                 Stroke="Crimson"
+                 StrokeThickness="5"
+                 HeightRequest="150"
+                 WidthRequest="150"
+                 HorizontalOptions="Center"/>
+
+            <Line Stroke="Black"
+              X1="0"
+              Y1="0"
+              X2="100"
+              Y2="50"
+              StrokeThickness="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
