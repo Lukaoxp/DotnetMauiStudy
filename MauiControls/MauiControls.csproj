@@ -63,6 +63,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\MauiCommandControls.xaml.cs">
+	    <DependentUpon>MauiCommandControls.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\MauiCommandControls.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MauiPresentationControls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
