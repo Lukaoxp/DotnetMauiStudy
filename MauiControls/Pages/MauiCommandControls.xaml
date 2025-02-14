@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiControls.Pages.MauiCommandControls"
+             Title="Maui Commands Controls">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="15">
+
+            <Button Text="Clique"
+                    x:Name="btnDemo"
+                    Clicked="btnDemo_Clicked" 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    />
+
+            <Label x:Name="lblDemo"
+                   Text=".Net MAUI"
+                   TextColor="red"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Button Text="Clique aqui para girar o texto"
+                    BackgroundColor="Crimson"
+                    ImageSource="material_symbols_light_person.svg"
+                    x:Name="btnDemo2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Clicked="btnDemo_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
