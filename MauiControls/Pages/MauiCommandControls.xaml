@@ -29,6 +29,65 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Clicked="btnDemo_Clicked"/>
+
+
+            <ImageButton Source="dotnet_bot.png"
+                         x:Name="btnImgDemo"
+                         Aspect="AspectFit"
+                         BorderColor="White"
+                         Clicked="btnImgDemo_Clicked"
+                         HeightRequest="200"
+                         WidthRequest="200"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         BorderWidth="1"
+                         CornerRadius="20"
+                         />
+
+            <VerticalStackLayout Padding="20" Background="DimGray" RadioButtonGroup.GroupName="Pets">
+                <Label Text="Qual o seu animal favorito?" FontSize="Large" TextColor="Wheat" />
+                <RadioButton Content="Gato" Value="Gato" CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton Content="Cachorro" Value="Cachorro" CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton Content="Galo" Value="Galo" CheckedChanged="RadioButton_CheckedChanged"/>
+                <Label x:Name="LblPets" Text="" />
+            </VerticalStackLayout>
+
+            <SearchBar Placeholder="Procurar produto" TextColor="White" SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+
+            <SwipeView Background="DimGray">
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem 
+                            BackgroundColor="LightGreen"
+                            IconImageSource="material_symbols_light_person.svg"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Gato"/>
+                        <SwipeItem 
+                            BackgroundColor="LightPink"
+                            IconImageSource="material_symbols_light_person.svg"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Galo"/>
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem 
+                            BackgroundColor="LemonChiffon"
+                            IconImageSource="material_symbols_light_person.svg"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Cachorro"/>
+                        <SwipeItem 
+                            BackgroundColor="DarkOrchid"
+                            IconImageSource="material_symbols_light_person.svg"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Pato"/>
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <Grid BackgroundColor="LightGray" HeightRequest="60">
+                    <Label Text="Deslize" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="Large" />
+                </Grid>
+            </SwipeView>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
