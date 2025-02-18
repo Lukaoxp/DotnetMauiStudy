@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiControls.Pages.MauiSetValueControls"
+             Title="Maui Set Value Controls">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Clique no checkbox"/>
+        <CheckBox x:Name="CheckBox1"
+                  IsChecked="False"
+                  Color="Green"
+                  CheckedChanged="CheckBox1_CheckedChanged"
+                  HorizontalOptions="Start"/>
+
+        <HorizontalStackLayout>
+            <CheckBox x:Name="CheckBox2"
+                IsChecked="False"
+                Color="Green"
+                CheckedChanged="CheckBox2_CheckedChanged"
+                />
+
+            <CheckBox x:Name="CheckBox3"
+                IsChecked="False"
+                Color="Green"
+                CheckedChanged="CheckBox3_CheckedChanged"
+                />
+            
+        </HorizontalStackLayout>
+        <VerticalStackLayout>
+            <Label x:Name="lblSlider" HorizontalOptions="Center"/>
+            <Slider x:Name="Slider1"
+                    Minimum="0"
+                    Maximum="10"
+                    MinimumTrackColor="Blue"
+                    MaximumTrackColor="SkyBlue"
+                    ThumbImageSource="material_symbols_light_person.svg"
+                    ThumbColor="Crimson"
+                    ValueChanged="Slider1_ValueChanged"
+
+                    />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Stepper
+                x:Name="stepper1"
+                Minimum="1"
+                Maximum="10"
+                Increment="1"
+                HorizontalOptions="Start"
+                ValueChanged="stepper1_ValueChanged"
+                />
+            <Label x:Name="lblStepper" HorizontalOptions="Start"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Switch" HorizontalOptions="Center"/>
+            <Switch x:Name="switch1" 
+                    IsToggled="True" 
+                    HorizontalOptions="Center"
+                    Toggled="switch1_Toggled"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <DatePicker
+                Format="dd/MM/yyyy"
+                MinimumDate="02/01/2025"/>
+            <TimePicker Format="HH:mm:ss" Time="10:45:02"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

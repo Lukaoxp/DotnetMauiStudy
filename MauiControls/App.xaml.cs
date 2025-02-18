@@ -7,8 +7,10 @@ namespace MauiControls
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MauiCommandControls());
+            var page = new NavigationPage(new MauiSetValueControls());
+            page.BarBackgroundColor = Color.FromRgba("#2196F3");
+            page.BarTextColor = Color.FromRgba("#FEFEFE");
+            MainPage = page;
         }
     }
 }
