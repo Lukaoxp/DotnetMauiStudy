@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiECommerce.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240428150933_Inicial")]
+    [Migration("20250417205458_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -487,7 +487,6 @@ namespace ApiECommerce.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 

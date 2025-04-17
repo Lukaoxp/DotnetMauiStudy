@@ -484,7 +484,6 @@ namespace ApiECommerce.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
