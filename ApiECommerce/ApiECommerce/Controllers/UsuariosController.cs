@@ -24,7 +24,7 @@ public class UsuariosController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    [ProducesResponseType(StatusCodes.Status201Created)] 
+    [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Register([FromBody] Usuario usuario)
     {
@@ -70,10 +70,10 @@ public class UsuariosController : ControllerBase
 
         return new ObjectResult(new
         {
-            access_token = jwt,
-            token_type = "bearer",
-            user_id = usuarioAtual.Id,
-            user_name = usuarioAtual.Nome
+            accesstoken = jwt,
+            tokentype = "bearer",
+            userid = usuarioAtual.Id,
+            username = usuarioAtual.Nome
         });
     }
 
@@ -102,7 +102,7 @@ public class UsuariosController : ControllerBase
 
             // Atualiza a propriedade UrlImagem do usuário com a URL da imagem enviada
             // Assume que a raiz do projeto web é o root
-            usuario.UrlImagem = "/userimages/" + uniqueFileName; 
+            usuario.UrlImagem = "/userimages/" + uniqueFileName;
 
             await dbContext.SaveChangesAsync();
             return Ok("Imagem enviada com sucesso");
@@ -120,8 +120,8 @@ public class UsuariosController : ControllerBase
 
         var usuario = await dbContext.Usuarios.FirstOrDefaultAsync(u => u.Email == userEmail);
 
-        if (usuario is null) 
-          return NotFound("Usuário não encontrado");
+        if (usuario is null)
+            return NotFound("Usuário não encontrado");
 
         var imagemPerfil = await dbContext.Usuarios
             .Where(x => x.Email == userEmail)
