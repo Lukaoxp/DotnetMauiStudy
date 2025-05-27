@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppLanches.Pages.InscricaoPage"
+             Title="InscricaoPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, *"
+          RowSpacing="20"
+          Margin="20,150,20,40">
+        <Image Grid.Row="0"
+               Source="lanchesico.png"
+               Aspect="AspectFit"
+               HeightRequest="100"
+               WidthRequest="100" />
+        <Label Grid.Row="1"
+               Text="Olá! junte-se a nós"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+        <Frame Grid.Row="2"
+               Padding="15"
+               BackgroundColor="FloralWhite" >
+            <VerticalStackLayout>
+                <Entry Placeholder="Nome"
+                       x:Name="EntNome" />
+                <Entry Placeholder="Email"
+                   x:Name="EntEmail" />
+                <Entry Placeholder="Telefone"
+                       x:Name="EntTelefone" 
+                       Keyboard="Telephone" />
+                <Entry Placeholder="Password"
+                       x:Name="EntPassword" 
+                       IsPassword="True" />
+            </VerticalStackLayout>
+        </Frame>
+        <Button Grid.Row="3"
+                Text="Faça seu registro"
+                BackgroundColor="#a90409"
+                x:Name="BtnSignup"
+                Clicked="BtnSignup_Clicked"/>
+        <HorizontalStackLayout Grid.Row="4"
+                               Spacing="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="EndAndExpand">
+            <Label Text="Ja possui uma conta?"/>
+            <Label Text="Clique aqui"
+                   TextColor="#a90409"
+                   FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapLogin" Tapped="TapLogin_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
