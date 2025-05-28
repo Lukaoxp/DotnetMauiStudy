@@ -64,6 +64,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\CarrinhoPage.xaml.cs">
+	    <DependentUpon>CarrinhoPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\FavoritosPage.xaml.cs">
+	    <DependentUpon>FavoritosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\PerfilPage.xaml.cs">
+	    <DependentUpon>PerfilPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\FavoritosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PerfilPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CarrinhoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\InscricaoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

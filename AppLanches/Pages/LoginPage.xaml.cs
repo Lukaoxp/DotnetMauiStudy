@@ -1,22 +1,34 @@
 using AppLanches.Services;
+using AppLanches.Validations;
 
 namespace AppLanches.Pages;
 
 public partial class LoginPage : ContentPage
 {
     private readonly ApiService _apiService;
-    public LoginPage(ApiService apiService)
+    private readonly IValidator _validator;
+    public LoginPage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
+        _validator = validator;
     }
     private async void BtnSignIn_Clicked(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(EntEmail.Text))
+        {
+            await DisplayAlert("Erro", "Informe o email", "Cancelar");
+            return;
+        }
+        if (string.IsNullOrEmpty(EntPassword.Text))
+        {
+            await DisplayAlert("Erro", "Informe a senha", "Cancelar");
+            return;
+        }
         var response = await _apiService.Login(EntEmail.Text, EntPassword.Text);
         if (!response.HasError)
         {
-            await DisplayAlert("Aviso", "Sua conta foi criada com sucesso!", "OK");
-            await Navigation.PushAsync(new LoginPage(_apiService));
+            Application.Current!.MainPage = new AppShell();
         }
         else
         {
@@ -26,7 +38,7 @@ public partial class LoginPage : ContentPage
 
     private async void TapRegister_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new InscricaoPage(_apiService));
+        await Navigation.PushAsync(new InscricaoPage(_apiService, _validator));
     }
 
 }

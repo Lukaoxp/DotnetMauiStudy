@@ -18,22 +18,23 @@
                FontAttributes="Bold"/>
         <Frame Grid.Row="2" 
                Padding="15" 
-               BackgroundColor="FloralWhite">
+               BackgroundColor="White">
             <VerticalStackLayout>
-                <Entry Placeholder="Email" x:Name="EntEmail"/>
+                <Entry Placeholder="Email" x:Name="EntEmail" Keyboard="Email"/>
                 <Entry Placeholder="Password" x:Name="EntPassword" IsPassword="True"/>
             </VerticalStackLayout>
         </Frame>
         <Button Grid.Row="3" 
-                Text="Login" 
-                BackgroundColor="#a90409" 
+                Text="Entrar" 
+                FontSize="Medium"
                 x:Name="BtnSignIn" 
+                BackgroundColor="#a90409" 
                 Clicked="BtnSignIn_Clicked"/>
         <HorizontalStackLayout Grid.Row="4" 
                                Spacing="2" 
                                HorizontalOptions="Center" 
                                VerticalOptions="EndAndExpand">
-            <Label Text="Não tem uma conta?"/>
+            <Label Text="Não tem uma conta? "/>
             <Label Text="Faça o registro agora" TextColor="#a90409" FontAttributes="Bold">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer x:Name="TapRegister" 
