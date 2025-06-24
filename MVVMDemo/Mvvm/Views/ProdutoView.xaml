@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MVVM_Demo.Mvvm.Views.ProdutoView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ProdutoView">
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Produto.Nome}"
+            VerticalOptions="Center" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Produto.Preco, StringFormat='R$ {0:F2}'}"
+            VerticalOptions="Center" />
+
+        <Slider
+            Maximum="100"
+            Minimum="0"
+            Value="{Binding Produto.Estoque}" />
+
+        <Switch HorizontalOptions="Start" IsToggled="{Binding Produto.Ativo}" />
+
+        <DatePicker Date="{Binding Produto.DataCompra}" />
+
+        <Entry Text="{Binding Produto.Peso, StringFormat='{0:F3}'}" />
+
+    </VerticalStackLayout>
+</ContentPage>
