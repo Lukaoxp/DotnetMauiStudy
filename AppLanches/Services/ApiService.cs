@@ -1,6 +1,7 @@
 ﻿using AppLanches.Models;
 using Microsoft.Extensions.Logging;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -9,7 +10,7 @@ namespace AppLanches.Services;
 public class ApiService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _baseUrl = "";
+    private readonly string _baseUrl = AppConfig.BaseUrl;
     private readonly ILogger<ApiService> _logger;
     JsonSerializerOptions _serializerOptions;
 
@@ -96,6 +97,7 @@ public class ApiService
             return new ApiResponse<bool> { ErrorMessage = ex.Message };
         }
     }
+
     public async Task<HttpResponseMessage> PostRequest(string uri, HttpContent content)
     {
         var enderecoUrl = _baseUrl + uri;
@@ -108,6 +110,80 @@ public class ApiService
         {
             _logger.LogError($"Erro ao enviar requisição POST para {uri}: {ex.Message}");
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+    }
+
+    public async Task<(List<Categoria>? Categorias, string? ErrorMessage)> GetCategorias()
+    {
+        return await GetAsync<List<Categoria>>("api/Categorias");
+    }
+
+    public async Task<(List<Produto>? Produtos, string? ErrorMessage)> GetProdutos(string tipoProduto, string categoriaId)
+    {
+        string endpoint = $"api/Produtos?tipoProduto={tipoProduto}&categoriaId={categoriaId}";
+        return await GetAsync<List<Produto>>(endpoint);
+    }
+
+    public async Task<(Produto? produto, string? ErrorMessage)> GetDetalheProduto(int produtoId)
+    {
+        string endpoint = $"api/Produtos/{produtoId}";
+        return await GetAsync<Produto>(endpoint);
+    }
+
+    private void AddAuthorizationHeader()
+    {
+        var token = Preferences.Get("accesstoken", string.Empty);
+        if (!string.IsNullOrEmpty(token))
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+    }
+
+    public async Task<(T? Data, string? ErrorMessage)> GetAsync<T>(string endpoint)
+    {
+        try
+        {
+            AddAuthorizationHeader();
+
+            var response = await _httpClient.GetAsync(_baseUrl + endpoint);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                var data = JsonSerializer.Deserialize<T>(responseString, _serializerOptions);
+                return (data ?? Activator.CreateInstance<T>(), null);
+            }
+            else
+            {
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    string errorMessage = "Unauthorized";
+                    _logger.LogWarning(errorMessage);
+                    return (default, errorMessage);
+                }
+
+                string generalErrorMessage = $"Erro na requisição: {response.ReasonPhrase}";
+                _logger.LogError(generalErrorMessage);
+                return (default, generalErrorMessage);
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            string errorMessage = $"Erro de requisição HTTP: {ex.Message}";
+            _logger.LogError(errorMessage);
+            return (default, errorMessage);
+        }
+        catch (JsonException ex)
+        {
+            string errorMessage = $"Erro ao desserializar JSON: {ex.Message}";
+            _logger.LogError(errorMessage);
+            return (default, errorMessage);
+        }
+        catch (Exception ex)
+        {
+            string errorMessage = $"Erro inesperado: {ex.Message}";
+            _logger.LogError(errorMessage);
+            return (default, errorMessage);
         }
     }
 }
