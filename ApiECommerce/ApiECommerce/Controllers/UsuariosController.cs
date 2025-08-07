@@ -72,8 +72,8 @@ public class UsuariosController : ControllerBase
         {
             accesstoken = jwt,
             tokentype = "bearer",
-            userid = usuarioAtual.Id,
-            username = usuarioAtual.Nome
+            usuarioid = usuarioAtual.Id,
+            usuarionome = usuarioAtual.Nome
         });
     }
 

@@ -86,7 +86,7 @@ public class ApiService
             var result = JsonSerializer.Deserialize<Token>(jsonResult, _serializerOptions);
 
             Preferences.Set("accesstoken", result!.AccessToken);
-            Preferences.Set("usuarioid", (int)result.UsuarioId);
+            Preferences.Set("usuarioid", (int)result.UsuarioId!);
             Preferences.Set("usuarionome", result!.UsuarioNome);
 
             return new ApiResponse<bool> { Data = true };
@@ -94,6 +94,32 @@ public class ApiService
         catch (Exception ex)
         {
             _logger.LogError($"Erro ao efetuar o login: {ex.Message}");
+            return new ApiResponse<bool> { ErrorMessage = ex.Message };
+        }
+    }
+    public async Task<ApiResponse<bool>> AdicionaItemNoCarrinho(CarrinhoCompra carrinhoCompra)
+    {
+        try
+        {
+            var json = JsonSerializer.Serialize(carrinhoCompra, _serializerOptions);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await PostRequest("api/ItensCarrinhoCompra", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogError($"Erro ao enviar requisição HTTP: {response.StatusCode}");
+                return new ApiResponse<bool>
+                {
+                    ErrorMessage = $"Erro ao enviar requisição HTTP: {response.StatusCode}"
+                };
+            }
+
+            return new ApiResponse<bool> { Data = true };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Erro ao adicionar item no carinho: {ex.Message}");
             return new ApiResponse<bool> { ErrorMessage = ex.Message };
         }
     }

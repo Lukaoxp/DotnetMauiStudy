@@ -60,6 +60,7 @@
         <CollectionView
             x:Name="CvMaisVendidos"
             Grid.Row="4"
+            SelectionChanged="CvMaisVendidos_SelectionChanged"
             SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
@@ -97,6 +98,7 @@
         <CollectionView
             x:Name="CvMaisPopulares"
             Grid.Row="6"
+            SelectionChanged="CvMaisPopulares_SelectionChanged"
             SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
