@@ -32,13 +32,13 @@ public class ItensCarrinhoCompraController : ControllerBase
                                    join p in dbContext.Produtos on s.ProdutoId equals p.Id
                                    select new
                                    {
-                                       Id = s.Id,
-                                       Preco = s.PrecoUnitario,
-                                       ValorTotal = s.ValorTotal,
-                                       Quantidade = s.Quantidade,
+                                       s.Id,
+                                       s.PrecoUnitario,
+                                       s.ValorTotal,
+                                       s.Quantidade,
                                        ProdutoId = p.Id,
                                        ProdutoNome = p.Nome,
-                                       UrlImagem = p.UrlImagem
+                                       p.UrlImagem
                                    }).ToListAsync();
 
         return Ok(itensCarrinho);
@@ -87,7 +87,7 @@ public class ItensCarrinhoCompraController : ControllerBase
         {
             // Aqui você pode lidar com a exceção, seja registrando-a, enviando uma resposta de erro adequada para o cliente, etc.
             // Por exemplo, você pode retornar uma resposta de erro 500 (Internal Server Error) com uma mensagem genérica para o cliente.
-            return StatusCode(StatusCodes.Status500InternalServerError, 
+            return StatusCode(StatusCodes.Status500InternalServerError,
                 "Ocorreu um erro ao processar a solicitação.");
         }
     }
@@ -125,9 +125,9 @@ public class ItensCarrinhoCompraController : ControllerBase
     /// <param name="acao">A ação a ser realizada no item do carrinho. Opções: 'aumentar', 'diminuir' ou 'deletar'.</param>
     /// <returns>Um objeto IActionResult representando o resultado da operação.</returns>
     [HttpPut]
-    [ProducesResponseType(StatusCodes.Status200OK)] 
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)] 
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     //[HttpPut("{produtoId}/{acao}")]
     public async Task<IActionResult> Put(int produtoId, string acao)
     {
@@ -140,7 +140,7 @@ public class ItensCarrinhoCompraController : ControllerBase
 
         if (usuario is null)
         {
-            return NotFound("Usuário não encontrado."); 
+            return NotFound("Usuário não encontrado.");
         }
 
         var itemCarrinhoCompra = await dbContext.ItensCarrinhoCompra.FirstOrDefaultAsync(s =>

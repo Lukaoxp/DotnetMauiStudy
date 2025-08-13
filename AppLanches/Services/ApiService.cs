@@ -156,6 +156,12 @@ public class ApiService
         return await GetAsync<Produto>(endpoint);
     }
 
+    public async Task<(List<CarrinhoCompraItem>? itensCarrinhoCompra, string? ErrorMessage)> GetItensCarrinhoCompra(int usuarioId)
+    {
+        string endpoint = $"api/ItensCarrinhoCompra/{usuarioId}";
+        return await GetAsync<List<CarrinhoCompraItem>>(endpoint);
+    }
+
     private void AddAuthorizationHeader()
     {
         var token = Preferences.Get("accesstoken", string.Empty);
