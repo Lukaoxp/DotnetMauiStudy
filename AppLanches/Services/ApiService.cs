@@ -169,6 +169,7 @@ public class ApiService
             return (false, errorMessage);
         }
     }
+
     #endregion
 
     #region Produtos
@@ -187,6 +188,33 @@ public class ApiService
     {
         string endpoint = $"api/Produtos/{produtoId}";
         return await GetAsync<Produto>(endpoint);
+    }
+    #endregion
+
+    #region Pedido
+    public async Task<ApiResponse<bool>> ConfirmarPedido(Pedido pedido)
+    {
+        try
+        {
+            var json = JsonSerializer.Serialize(pedido, _serializerOptions);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await PostRequest("api/Pedidos", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorMessage = response.StatusCode == HttpStatusCode.Unauthorized ? "Unauthorized" : $"Erro ao enviar requisição HTTP: {response.StatusCode}";
+
+                _logger.LogError($"Erro ao enviar requisição HTTP: {response.StatusCode}");
+                return new ApiResponse<bool> { ErrorMessage = errorMessage };
+            }
+            return new ApiResponse<bool> { Data = true };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Erro ao confirmar o pedido: {ex.Message}");
+            return new ApiResponse<bool> { ErrorMessage = ex.Message };
+        }
     }
     #endregion
 
