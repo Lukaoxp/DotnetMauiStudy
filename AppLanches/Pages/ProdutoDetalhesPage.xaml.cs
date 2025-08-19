@@ -10,14 +10,17 @@ public partial class ProdutoDetalhesPage : ContentPage
 {
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
+    private readonly FavoritosService _favoritosService;
     private int _produtoId;
+    private string? _imagemUrl;
     private bool _loginPageDisplayed = false;
 
-    public ProdutoDetalhesPage(int produtoId, string produtoNome, ApiService apiService, IValidator validator)
+    public ProdutoDetalhesPage(int produtoId, string produtoNome, ApiService apiService, IValidator validator, FavoritosService favoritosService)
     {
         InitializeComponent();
         _apiService = apiService;
         _validator = validator;
+        _favoritosService = favoritosService;
         _produtoId = produtoId;
         Title = produtoNome ?? "Detalhes do Produto";
     }
@@ -25,6 +28,7 @@ public partial class ProdutoDetalhesPage : ContentPage
     {
         base.OnAppearing();
         await GetProdutoDetalhes(_produtoId);
+        AtualizaFavoritoButton();
     }
 
     private async Task<Produto?> GetProdutoDetalhes(int produtoId)
@@ -46,7 +50,8 @@ public partial class ProdutoDetalhesPage : ContentPage
             }
             else
             {
-                ImagemProduto.Source = produtoDetalhe.CaminhoImagem;
+                _imagemUrl = produtoDetalhe.CaminhoImagem;
+                ImagemProduto.Source = _imagemUrl;
                 LblProdutoNome.Text = produtoDetalhe.Nome;
                 LblProdutoPreco.Text = produtoDetalhe.Preco.ToString();
                 LblProdutoDescricao.Text = produtoDetalhe.Detalhe;
@@ -63,7 +68,7 @@ public partial class ProdutoDetalhesPage : ContentPage
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
     }
 
     private void CvProdutos_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,14 +76,47 @@ public partial class ProdutoDetalhesPage : ContentPage
         var currentSelection = e.CurrentSelection.FirstOrDefault() as Produto;
         if (currentSelection is null) return;
 
-        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator));
+        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator, _favoritosService));
 
         ((CollectionView)sender).SelectedItem = null;
     }
 
-    private void ImagemBtnFavorito_Clicked(object sender, EventArgs e)
+    private async void ImagemBtnFavorito_Clicked(object sender, EventArgs e)
     {
+        try
+        {
+            var existeFavorito = await _favoritosService.ReadAsync(_produtoId);
+            if (existeFavorito != null)
+            {
+                await _favoritosService.DeleteAsync(existeFavorito);
+            }
+            else
+            {
+                var produtoFavorito = new ProdutoFavorito
+                {
+                    ProdutoId = _produtoId,
+                    IsFavorito = true,
+                    Detalhe = LblProdutoDescricao.Text,
+                    Nome = LblProdutoNome.Text,
+                    Preco = Convert.ToDecimal(LblProdutoPreco.Text),
+                    ImageUrl = _imagemUrl
+                };
 
+                await _favoritosService.CreateAsync(produtoFavorito);
+            }
+            AtualizaFavoritoButton();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", $"Ocoreu um erro: {ex.Message}", "OK");
+        }
+    }
+
+    private async void AtualizaFavoritoButton()
+    {
+        var existeFavorito = await _favoritosService.ReadAsync(_produtoId);
+
+        ImagemBtnFavorito.Source = existeFavorito is not null ? "heartfill" : "heart";
     }
 
     private void BtnRemove_Clicked(object sender, EventArgs e)

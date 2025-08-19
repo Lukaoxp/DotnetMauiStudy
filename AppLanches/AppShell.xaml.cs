@@ -8,19 +8,23 @@ namespace AppLanches
     {
         private readonly ApiService _apiService;
         private readonly IValidator _validator;
-        public AppShell(ApiService apiService, IValidator validator)
+        private readonly FavoritosService _favoritosService;
+
+        public AppShell(ApiService apiService, IValidator validator, FavoritosService favoritosService)
         {
             InitializeComponent();
-            _apiService = apiService ?? throw new ArgumentNullException(nameof(_apiService));
+            _apiService = apiService;
             _validator = validator;
+            _favoritosService = favoritosService;
+
             ConfigureShell();
         }
 
         private void ConfigureShell()
         {
-            var homePage = new HomePage(_apiService, _validator);
-            var carrinhoPage = new CarrinhoPage(_apiService, _validator);
-            var favoritosPage = new FavoritosPage();
+            var homePage = new HomePage(_apiService, _validator, _favoritosService);
+            var carrinhoPage = new CarrinhoPage(_apiService, _validator, _favoritosService);
+            var favoritosPage = new FavoritosPage(_apiService, _validator, _favoritosService);
             var perfilPage = new PerfilPage();
 
             Items.Add(new TabBar

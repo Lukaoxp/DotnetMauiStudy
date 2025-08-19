@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppLanches.Pages.FavoritosPage"
-             Title="FavoritosPage">
+<ContentPage
+    x:Class="AppLanches.Pages.FavoritosPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="FavoritosPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Favoritos"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label
+            x:Name="LblAviso"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            Text="Nenhum item favorito selecionado."
+            TextColor="Red"
+            VerticalOptions="Center" />
+        <CollectionView
+            x:Name="CvProdutos"
+            Margin="10"
+            SelectionChanged="CvProdutos_SelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="15"
+                    Orientation="Vertical"
+                    Span="2"
+                    VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Padding="10"
+                        StrokeShape="RoundRectangle 10"
+                        VerticalOptions="Start">
+                        <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="5">
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="150"
+                                Source="{Binding ImageUrl}" />
+                            <Label
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                MaxLines="2"
+                                Text="{Binding Nome}" />
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                Text="{Binding Preco, StringFormat='R$ {0:F2}'}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
