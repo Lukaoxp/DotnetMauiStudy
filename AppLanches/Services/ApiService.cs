@@ -10,7 +10,6 @@ namespace AppLanches.Services;
 public class ApiService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _baseUrl = AppConfig.BaseUrl;
     private readonly ILogger<ApiService> _logger;
     JsonSerializerOptions _serializerOptions;
 
@@ -218,6 +217,42 @@ public class ApiService
     }
     #endregion
 
+    #region ImagemUsuario
+    public async Task<(ImagemPerfil? ImagemPerfil, string? ErrorMessage)> GetImagemPerfilUsuario()
+    {
+        string endpoint = "api/usuarios/imagemperfil";
+        return await GetAsync<ImagemPerfil>(endpoint);
+    }
+
+    public async Task<ApiResponse<bool>> UploadImagemUsuario(byte[] imagemArray)
+    {
+        try
+        {
+            var content = new MultipartFormDataContent();
+            content.Add(new ByteArrayContent(imagemArray), "imagem", "image.jpg");
+            string endpoint = "api/usuarios/uploadfoto";
+
+            var response = await PostRequest(endpoint, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorMessage = response.StatusCode == HttpStatusCode.Unauthorized ? "Unauthorized" : $"Erro ao enviar requisição HTTP:{response.StatusCode}";
+
+                _logger.LogError($"Erro ao enviar requisição HTTP:{response.StatusCode}");
+                return new ApiResponse<bool> { ErrorMessage = errorMessage };
+            }
+
+            return new ApiResponse<bool> { Data = true };
+        }
+        catch (Exception ex)
+        {
+
+            _logger.LogError($"Erro ao fazer upload da imagem do usuário: {ex.Message}");
+            return new ApiResponse<bool> { ErrorMessage = ex.Message };
+        }
+    }
+    #endregion
+
     private void AddAuthorizationHeader()
     {
         var token = Preferences.Get("accesstoken", string.Empty);
@@ -233,7 +268,7 @@ public class ApiService
         {
             AddAuthorizationHeader();
 
-            var response = await _httpClient.GetAsync(_baseUrl + endpoint);
+            var response = await _httpClient.GetAsync(AppConfig.BaseUrl + endpoint);
 
             if (response.IsSuccessStatusCode)
             {
@@ -277,7 +312,7 @@ public class ApiService
 
     public async Task<HttpResponseMessage> PostRequest(string uri, HttpContent content)
     {
-        var enderecoUrl = _baseUrl + uri;
+        var enderecoUrl = AppConfig.BaseUrl + uri;
         try
         {
             var result = await _httpClient.PostAsync(enderecoUrl, content);
@@ -292,7 +327,7 @@ public class ApiService
 
     public async Task<HttpResponseMessage> PutRequest(string uri, HttpContent content)
     {
-        var enderecoUrl = _baseUrl + uri;
+        var enderecoUrl = AppConfig.BaseUrl + uri;
         try
         {
             AddAuthorizationHeader();
