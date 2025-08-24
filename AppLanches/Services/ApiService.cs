@@ -190,7 +190,7 @@ public class ApiService
     }
     #endregion
 
-    #region Pedido
+    #region Pedidos
     public async Task<ApiResponse<bool>> ConfirmarPedido(Pedido pedido)
     {
         try
@@ -214,6 +214,19 @@ public class ApiService
             _logger.LogError($"Erro ao confirmar o pedido: {ex.Message}");
             return new ApiResponse<bool> { ErrorMessage = ex.Message };
         }
+    }
+
+    public async Task<(List<PedidoPorUsuario>? Pedidos, string? ErrorMessage)> GetPedidosPorUsuario(int usuarioId)
+    {
+        string endpoint = $"api/pedidos/PedidosPorUsuario/{usuarioId}";
+
+        return await GetAsync<List<PedidoPorUsuario>>(endpoint);
+    }
+
+    public async Task<(List<PedidoDetalhe>? PedidoDetalhe, string? ErrorMessage)> GetPedidoDetalhes(int pedidoId)
+    {
+        string endpoint = $"api/pedidos/DetalhesPedido/{pedidoId}";
+        return await GetAsync<List<PedidoDetalhe>>(endpoint);
     }
     #endregion
 

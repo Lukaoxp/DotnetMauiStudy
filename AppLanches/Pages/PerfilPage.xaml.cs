@@ -122,23 +122,24 @@ public partial class PerfilPage : ContentPage
         return null;
     }
 
-    private void BtnLogout_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void Pedidos_Tapped(object sender, TappedEventArgs e)
     {
-
+        Navigation.PushAsync(new PedidosPage(_apiService, _validator, _favoritosService));
     }
 
     private void MinhaConta_Tapped(object sender, TappedEventArgs e)
     {
-
+        Navigation.PushAsync(new MinhaContaPage(_apiService));
     }
 
     private void Perguntas_Tapped(object sender, TappedEventArgs e)
     {
+        Navigation.PushAsync(new FaqPage());
+    }
 
+    private void BtnLogout_Clicked(object sender, EventArgs e)
+    {
+        Preferences.Set("acesstoken", string.Empty);
+        Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _validator, _favoritosService));
     }
 }

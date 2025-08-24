@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppLanches.Pages.PedidoDetalhesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Detalhes do pedido">
+    <CollectionView x:Name="CvPedidoDetalhes" Margin="20">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Border
+                    Padding="10"
+                    Stroke="#87A7AC"
+                    StrokeShape="RoundRectangle 10">
+                    <Grid ColumnDefinitions="2*, 8*">
+                        <Image
+                            Aspect="Fill"
+                            HeightRequest="60"
+                            Source="{Binding CaminhoImagem}"
+                            VerticalOptions="Center"
+                            WidthRequest="60" />
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding ProdutoNome}" />
+                            <Label Text="{Binding ProdutoPreco, StringFormat='R$ {0}'}" />
+                            <Label Text="{Binding Quantidade, StringFormat='x {0}'}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.Footer>
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
+                <Label Text="Preço Total: " />
+                <Label x:Name="LblPrecoTotal" />
+            </HorizontalStackLayout>
+        </CollectionView.Footer>
+    </CollectionView>
+</ContentPage>
