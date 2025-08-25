@@ -10,10 +10,10 @@ public partial class FavoritosPage : ContentPage
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
 
-    public FavoritosPage(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public FavoritosPage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
-        _favoritosService = favoritosService;
+        _favoritosService = ServiceFactory.CreateFavoritosService();
         _apiService = apiService;
         _validator = validator;
     }
@@ -53,7 +53,7 @@ public partial class FavoritosPage : ContentPage
 
         if (currentSelection == null) return;
 
-        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.ProdutoId, currentSelection.Nome!, _apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.ProdutoId, currentSelection.Nome!, _apiService, _validator));
 
         ((CollectionView)sender).SelectedItem = null;
     }

@@ -7,15 +7,13 @@ public partial class PedidoDetalhesPage : ContentPage
 {
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
-    private readonly FavoritosService _favoritosService;
     private bool _loginPageDisplayed = false;
 
-    public PedidoDetalhesPage(int pedidoId, decimal pedidoTotal, ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public PedidoDetalhesPage(int pedidoId, decimal pedidoTotal, ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _favoritosService = favoritosService;
 
         LblPrecoTotal.Text = "R$" + pedidoTotal;
         GetPedidoDetalhe(pedidoId);
@@ -31,6 +29,9 @@ public partial class PedidoDetalhesPage : ContentPage
     {
         try
         {
+            loadPedidosIndicator.IsRunning = true;
+            loadPedidosIndicator.IsVisible = true;
+
             var (pedidoDetalhes, errorMessage) = await _apiService.GetPedidoDetalhes(pedidoId);
             if (errorMessage == "Unauthorized" && !_loginPageDisplayed)
             {
@@ -53,10 +54,15 @@ public partial class PedidoDetalhesPage : ContentPage
         {
             await DisplayAlert("Erro", "Ocorre um erro ao obter os detalhes. Tente novamnte mais tarde", "OK");
         }
+        finally
+        {
+            loadPedidosIndicator.IsRunning = false;
+            loadPedidosIndicator.IsVisible = false;
+        }
     }
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 }

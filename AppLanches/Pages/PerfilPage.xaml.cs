@@ -8,16 +8,14 @@ public partial class PerfilPage : ContentPage
 
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
-    private readonly FavoritosService _favoritosService;
     private bool _loginPageDisplayed = false;
 
-    public PerfilPage(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public PerfilPage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         LblNomeUsuario.Text = Preferences.Get("usuarionome", string.Empty);
         _apiService = apiService;
         _validator = validator;
-        _favoritosService = favoritosService;
     }
 
     protected override async void OnAppearing()
@@ -61,7 +59,7 @@ public partial class PerfilPage : ContentPage
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 
     private async void ImgBtnPerfil_Clicked(object sender, EventArgs e)
@@ -124,7 +122,7 @@ public partial class PerfilPage : ContentPage
 
     private void Pedidos_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new PedidosPage(_apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new PedidosPage(_apiService, _validator));
     }
 
     private void MinhaConta_Tapped(object sender, TappedEventArgs e)
@@ -140,6 +138,6 @@ public partial class PerfilPage : ContentPage
     private void BtnLogout_Clicked(object sender, EventArgs e)
     {
         Preferences.Set("acesstoken", string.Empty);
-        Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _validator, _favoritosService));
+        Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _validator));
     }
 }

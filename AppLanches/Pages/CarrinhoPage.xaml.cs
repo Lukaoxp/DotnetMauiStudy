@@ -9,16 +9,14 @@ public partial class CarrinhoPage : ContentPage
 {
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
-    private readonly FavoritosService _favoritosService;
     private bool _loginPageDisplayed = false;
     private bool _isNavigatingToEmptyCartPage = false;
 
-    public CarrinhoPage(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public CarrinhoPage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _favoritosService = favoritosService;
     }
 
     public ObservableCollection<CarrinhoCompraItem> ItensCarrinhoCompra { get; set; } = [];
@@ -118,7 +116,7 @@ public partial class CarrinhoPage : ContentPage
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 
     private void AtualizaPrecoTotal()

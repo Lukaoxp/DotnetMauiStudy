@@ -15,12 +15,12 @@ public partial class ProdutoDetalhesPage : ContentPage
     private string? _imagemUrl;
     private bool _loginPageDisplayed = false;
 
-    public ProdutoDetalhesPage(int produtoId, string produtoNome, ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public ProdutoDetalhesPage(int produtoId, string produtoNome, ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _favoritosService = favoritosService;
+        _favoritosService = ServiceFactory.CreateFavoritosService();
         _produtoId = produtoId;
         Title = produtoNome ?? "Detalhes do Produto";
     }
@@ -68,7 +68,7 @@ public partial class ProdutoDetalhesPage : ContentPage
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 
     private void CvProdutos_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,7 +76,7 @@ public partial class ProdutoDetalhesPage : ContentPage
         var currentSelection = e.CurrentSelection.FirstOrDefault() as Produto;
         if (currentSelection is null) return;
 
-        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator));
 
         ((CollectionView)sender).SelectedItem = null;
     }

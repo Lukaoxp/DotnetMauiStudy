@@ -8,15 +8,13 @@ public partial class PedidosPage : ContentPage
 {
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
-    private readonly FavoritosService _favoritosService;
     private bool _loginPageDisplayed;
 
-    public PedidosPage(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public PedidosPage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         _apiService = apiService;
         _validator = validator;
-        _favoritosService = favoritosService;
     }
 
     protected override void OnAppearing()
@@ -29,6 +27,9 @@ public partial class PedidosPage : ContentPage
     {
         try
         {
+            loadPedidosIndicator.IsRunning = true;
+            loadPedidosIndicator.IsVisible = true;
+
             var (pedidos, errorMessage) = await _apiService.GetPedidosPorUsuario(Preferences.Get("usuarioid", 0));
             if (errorMessage == "Unauthorized" && !_loginPageDisplayed)
             {
@@ -54,13 +55,18 @@ public partial class PedidosPage : ContentPage
         {
             await DisplayAlert("Erro", "Ocorreu um erro ao obter pedidos. Tente novamente mais tarde.", "OK");
         }
+        finally
+        {
+            loadPedidosIndicator.IsRunning = false;
+            loadPedidosIndicator.IsVisible = false;
+        }
 
     }
 
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 
     private void CvPedidos_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,7 +75,7 @@ public partial class PedidosPage : ContentPage
 
         if (selectedItem == null) return;
 
-        Navigation.PushAsync(new PedidoDetalhesPage(selectedItem.Id, selectedItem.PedidoTotal, _apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new PedidoDetalhesPage(selectedItem.Id, selectedItem.PedidoTotal, _apiService, _validator));
 
         ((CollectionView)sender).SelectedItem = null;
     }

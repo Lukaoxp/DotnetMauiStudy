@@ -8,15 +8,13 @@ namespace AppLanches
     {
         private readonly ApiService _apiService;
         private readonly IValidator _validator;
-        private readonly FavoritosService _favoritosService;
 
-        public App(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+        public App(ApiService apiService, IValidator validator)
         {
             InitializeComponent();
 
             _apiService = apiService;
             _validator = validator;
-            _favoritosService = favoritosService;
 
             SetMainPage();
         }
@@ -26,10 +24,10 @@ namespace AppLanches
             var accessToken = Preferences.Get("accesstoken", string.Empty);
             if (string.IsNullOrEmpty(accessToken))
             {
-                MainPage = new NavigationPage(new LoginPage(_apiService, _validator, _favoritosService));
+                MainPage = new NavigationPage(new LoginPage(_apiService, _validator));
                 return;
             }
-            MainPage = new AppShell(_apiService, _validator, _favoritosService);
+            MainPage = new AppShell(_apiService, _validator);
         }
     }
 }

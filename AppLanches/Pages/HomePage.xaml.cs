@@ -8,17 +8,15 @@ public partial class HomePage : ContentPage
 {
     private readonly ApiService _apiService;
     private readonly IValidator _validator;
-    private readonly FavoritosService _favoritosService;
     private bool _loginPageDisplayed = false;
     private bool _isDataLoaded = false;
 
-    public HomePage(ApiService apiService, IValidator validator, FavoritosService favoritosService)
+    public HomePage(ApiService apiService, IValidator validator)
     {
         InitializeComponent();
         LblNomeUsuario.Text = $"Olá {Preferences.Get("usuarionome", string.Empty)}";
         _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         _validator = validator;
-        _favoritosService = favoritosService;
         Title = AppConfig.tituloHomePage;
     }
 
@@ -43,7 +41,7 @@ public partial class HomePage : ContentPage
     private async Task DisplayLoginPage()
     {
         _loginPageDisplayed = true;
-        await Navigation.PushAsync(new LoginPage(_apiService, _validator, _favoritosService));
+        await Navigation.PushAsync(new LoginPage(_apiService, _validator));
     }
 
     private async Task<IEnumerable<Categoria>> GetListaCategorias()
@@ -135,7 +133,7 @@ public partial class HomePage : ContentPage
 
         if (currentSelection is null) return;
 
-        Navigation.PushAsync(new ListaProdutosPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new ListaProdutosPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator));
 
         ((CollectionView)sender).SelectedItem = null; // Deselect the item after navigation
     }
@@ -162,7 +160,7 @@ public partial class HomePage : ContentPage
 
         if (currentSelection is null) return;
 
-        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator, _favoritosService));
+        Navigation.PushAsync(new ProdutoDetalhesPage(currentSelection.Id, currentSelection.Nome!, _apiService, _validator));
         collectionView.SelectedItem = null; // Deselect the item after navigation
     }
 }
