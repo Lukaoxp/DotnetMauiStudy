@@ -1,4 +1,4 @@
-﻿using MauiConcepts.Pages;
+﻿using MauiConcepts.Layouts;
 
 namespace MauiConcepts
 {
@@ -14,7 +14,10 @@ namespace MauiConcepts
             //MainPage = new FlyoutPageDemo();
 
             // Tabbed page
-            MainPage = new TabbedPageDemo();
+            //MainPage = new TabbedPageDemo();
+
+            // StackLayout
+            MainPage = new StackLayoutDemo();
         }
     }
 }

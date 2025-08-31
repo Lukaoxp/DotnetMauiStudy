@@ -63,12 +63,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Layouts\StackLayoutDemo.xaml.cs">
+	    <DependentUpon>StackLayoutDemo.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\FlyoutPageDemo.xaml.cs">
 	    <DependentUpon>FlyoutPageDemo.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Layouts\StackLayoutDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\FlyoutPageDemo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

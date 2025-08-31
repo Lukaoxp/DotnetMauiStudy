@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Layouts.StackLayoutDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="StackLayoutDemo">
+    <VerticalStackLayout Margin="10" Spacing="50">
+        <StackLayout Orientation="Vertical" Spacing="20">
+            <Label
+                Background="LightGreen"
+                FontSize="20"
+                Text="Texto 1" />
+            <Label
+                Background="LightCoral"
+                FontSize="20"
+                Text="Texto 2 " />
+            <Label
+                Background="LightBlue"
+                FontSize="20"
+                Text="Texto 3" />
+        </StackLayout>
+
+        <StackLayout>
+            <Label FontSize="24" Text="Sign In" />
+            <Entry Placeholder="Usuário" PlaceholderColor="Black" />
+            <Entry Placeholder="Senha" PlaceholderColor="Black" />
+            <Button FontSize="Large" Text="LOGIN" />
+        </StackLayout>
+        <!--  alinhamento  -->
+        <StackLayout Spacing="15">
+            <Label
+                BackgroundColor="LightGray"
+                HorizontalOptions="Start"
+                Text="Start" />
+            <Label
+                BackgroundColor="LightGray"
+                HorizontalOptions="Center"
+                Text="Center" />
+            <Label
+                BackgroundColor="LightGray"
+                HorizontalOptions="End"
+                Text="End" />
+            <Label
+                BackgroundColor="LightGray"
+                HorizontalOptions="Fill"
+                Text="Fill" />
+        </StackLayout>
+
+        <StackLayout
+            HeightRequest="200"
+            Orientation="Horizontal"
+            Spacing="15">
+            <Label
+                BackgroundColor="LightGray"
+                Text="Start"
+                VerticalOptions="Start" />
+            <Label
+                BackgroundColor="LightGray"
+                Text="Center"
+                VerticalOptions="Center" />
+            <Label
+                BackgroundColor="LightGray"
+                Text="End"
+                VerticalOptions="End" />
+            <Label
+                BackgroundColor="LightGray"
+                Text="Fill"
+                VerticalOptions="Fill" />
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
