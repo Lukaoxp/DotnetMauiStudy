@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage
+    x:Class="MauiConcepts.Pages.FlyoutPageDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="FlyoutPageDemo"
+    FlyoutLayoutBehavior="Split">
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Flyout submenu" BackgroundColor="CadetBlue">
+            <Label
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="Submenu"
+                VerticalTextAlignment="Center" />
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <ContentPage>
+            <Label
+                BackgroundColor="DarkRed"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="Detalhes"
+                VerticalTextAlignment="Center" />
+        </ContentPage>
+    </FlyoutPage.Detail>
+
+</FlyoutPage>
