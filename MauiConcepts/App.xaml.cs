@@ -7,7 +7,6 @@ namespace MauiConcepts
         public App()
         {
             InitializeComponent();
-
             //MainPage = new AppShell();
 
             // Flyout page
@@ -17,7 +16,10 @@ namespace MauiConcepts
             //MainPage = new TabbedPageDemo();
 
             // StackLayout
-            MainPage = new StackLayoutDemo();
+            //MainPage = new StackLayoutDemo();
+
+            // Grid
+            MainPage = new NavigationPage(new GridDemo());
         }
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Layouts.GridDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="GridDemo">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+        <Label
+            Grid.Row="0"
+            BackgroundColor="LightPink"
+            Text="row 0" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            BackgroundColor="LightCyan"
+            Text="row 1" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            BackgroundColor="LightSkyBlue"
+            Text="row 2 column 0 span 2 and this big text to show" />
+    </Grid>
+</ContentPage>
