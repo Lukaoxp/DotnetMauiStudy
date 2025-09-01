@@ -73,6 +73,9 @@
 	  <Compile Update="Pages\FavoritosPage.xaml.cs">
 	    <DependentUpon>FavoritosPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\PedidoDetalhesPage.xaml.cs">
+	    <DependentUpon>PedidoDetalhesPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\PerfilPage.xaml.cs">
 	    <DependentUpon>PerfilPage.xaml</DependentUpon>
 	  </Compile>
