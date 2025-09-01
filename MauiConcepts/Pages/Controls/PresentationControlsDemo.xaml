@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Controls.PresentationControlsDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="PresentationControlsDemo">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+            <BoxView
+                BackgroundColor="Transparent"
+                CornerRadius="15"
+                HeightRequest="160"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="160"
+                Color="CornflowerBlue" />
+
+            <Label
+                BackgroundColor="LightGray"
+                CharacterSpacing="2"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Texto"
+                TextDecorations="Underline,Strikethrough " />
+
+            <Label
+                LineBreakMode="TailTruncation"
+                LineHeight="1.5"
+                MaxLines="3"
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non sapien urna. Cras risus sapien, posuere nec gravida nec, tincidunt eu velit. Duis eu magna elit. Curabitur vehicula ligula et tortor congue, sed congue sem vulputate. Donec in ligula convallis augue pellentesque commodo in vitae quam. "
+                TextType="Text" />
+
+            <Label Text="texto em maiusculo" TextTransform="Uppercase" />
+
+            <Ellipse
+                Fill="LightYellow"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                Stroke="LightBlue"
+                StrokeThickness="10"
+                WidthRequest="150" />
+
+            <Line
+                Stroke="Black"
+                StrokeThickness="5"
+                X1="0"
+                X2="300"
+                Y1="0"
+                Y2="50" />
+
+            <Rectangle
+                Fill="DarkRed"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                RadiusX="10"
+                RadiusY="20"
+                Stroke="Black"
+                StrokeThickness="5"
+                WidthRequest="150" />
+
+            <Polygon
+                Fill="LightBlue"
+                Points="40,10 70,80 10,50"
+                Stroke="DarkBlue"
+                StrokeThickness="5" />
+
+            <Polyline Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30" Stroke="Red" />
+
+            <Path
+                Aspect="Uniform"
+                Data="M 10,100 L 100,100 100,50Z"
+                HeightRequest="100"
+                Stroke="Black"
+                StrokeThickness="2"
+                WidthRequest="100" />
+
+            <Border
+                Padding="16,8"
+                Background="CadetBlue"
+                HorizontalOptions="Center"
+                Stroke="Gold"
+                StrokeShape="RoundRectangle 40,0,0,40"
+                StrokeThickness="2">
+                <Label Text="Bem vindo" />
+            </Border>
+
+            <Image Source="dotnet_bot.png" />
+
+            <Image
+                HeightRequest="300"
+                Source="https://macoratti.net/macoratti.gif"
+                WidthRequest="300" />
+
+            <Image
+                HeightRequest="100"
+                IsAnimationPlaying="True"
+                Source="https://macoratti.net/1_pulando.gif"
+                WidthRequest="100" />
+
+            <Frame
+                Padding="8"
+                BorderColor="Gray"
+                CornerRadius="10">
+                <VerticalStackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="Exemplo Card" />
+                    <BoxView HeightRequest="2" Color="Gray" />
+                    <Label FontSize="Medium" Text="Usando frame e vertical stack layout" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <WebView HeightRequest="500" Source="https://macoratti.net" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

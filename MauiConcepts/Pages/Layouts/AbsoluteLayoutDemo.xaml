@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Layouts.AbsoluteLayoutDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AbsoluteLayoutDemo">
+    <AbsoluteLayout>
+        <BoxView
+            AbsoluteLayout.LayoutBounds=".5,.5,.9,.6"
+            AbsoluteLayout.LayoutFlags="All"
+            Color="Black" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="1,.5,100,100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Color="Red" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds="0,.5,100,100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Color="Green" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds=".5,0,100,100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Color="Yellow" />
+        <BoxView
+            AbsoluteLayout.LayoutBounds=".5,1,100,100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Color="Blue" />
+    </AbsoluteLayout>
+</ContentPage>

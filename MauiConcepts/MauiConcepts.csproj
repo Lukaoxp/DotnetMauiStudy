@@ -63,7 +63,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Layouts\StackLayoutDemo.xaml.cs">
+	  <Compile Update="Pages\Layouts\StackLayoutDemo.xaml.cs">
 	    <DependentUpon>StackLayoutDemo.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\FlyoutPageDemo.xaml.cs">
@@ -72,10 +72,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Layouts\GridDemo.xaml">
+	  <MauiXaml Update="Pages\Controls\PresentationControlsDemo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Layouts\StackLayoutDemo.xaml">
+	  <MauiXaml Update="Pages\Layouts\AbsoluteLayoutDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Layouts\FlexLayoutDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Layouts\GridDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Layouts\StackLayoutDemo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\FlyoutPageDemo.xaml">

@@ -1,4 +1,4 @@
-﻿using MauiConcepts.Layouts;
+﻿using MauiConcepts.Controls;
 
 namespace MauiConcepts
 {
@@ -15,11 +15,19 @@ namespace MauiConcepts
             // Tabbed page
             //MainPage = new TabbedPageDemo();
 
-            // StackLayout
+            // Stack Layout
             //MainPage = new StackLayoutDemo();
 
             // Grid
-            MainPage = new NavigationPage(new GridDemo());
+            //MainPage = new NavigationPage(new GridDemo());
+
+            // Flex Layout
+            //MainPage = new NavigationPage(new FlexLayoutDemo());
+
+            //Absolute Layout
+            //MainPage = new NavigationPage(new AbsoluteLayoutDemo());
+
+            MainPage = new NavigationPage(new PresentationControlsDemo());
         }
     }
 }
