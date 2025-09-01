@@ -1,4 +1,4 @@
-﻿using MauiConcepts.Controls;
+﻿using MauiConcepts.Pages;
 
 namespace MauiConcepts
 {
@@ -24,10 +24,14 @@ namespace MauiConcepts
             // Flex Layout
             //MainPage = new NavigationPage(new FlexLayoutDemo());
 
-            //Absolute Layout
+            // Absolute Layout
             //MainPage = new NavigationPage(new AbsoluteLayoutDemo());
 
-            MainPage = new NavigationPage(new PresentationControlsDemo());
+            // Presentation Controls
+            //MainPage = new NavigationPage(new PresentationControlsDemo());
+
+            // Command Controls
+            MainPage = new NavigationPage(new CommandControls());
         }
     }
 }

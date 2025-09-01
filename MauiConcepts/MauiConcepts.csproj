@@ -72,6 +72,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\Controls\CommandControls.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Controls\PresentationControlsDemo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
