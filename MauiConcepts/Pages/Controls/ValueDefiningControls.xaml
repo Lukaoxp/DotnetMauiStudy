@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Pages.Controls.ValueDefiningControls"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ValueDefiningControls">
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout>
+            <Label Text="Clique no checkbox" />
+            <CheckBox
+                x:Name="Checkbox1"
+                CheckedChanged="Checkbox1_CheckedChanged"
+                HorizontalOptions="Start"
+                IsChecked="False"
+                Color="Green" />
+            <Label Text="Clique no checkbox" />
+            <HorizontalStackLayout>
+                <CheckBox x:Name="Checkbox2" CheckedChanged="Checkbox2_CheckedChanged" />
+                <CheckBox x:Name="Checkbox3" CheckedChanged="Checkbox3_CheckedChanged" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label x:Name="lblSlider" HorizontalOptions="Center" />
+            <Slider
+                x:Name="Slider1"
+                Maximum="10"
+                MaximumTrackColor="Pink"
+                Minimum="0"
+                MinimumTrackColor="Red"
+                ThumbColor="black"
+                ValueChanged="Slider1_ValueChanged" />
+        </VerticalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Stepper
+                Increment="2"
+                Maximum="10"
+                Minimum="0"
+                ValueChanged="Stepper_ValueChanged" />
+            <Label x:Name="lblStepper" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <Switch
+            HorizontalOptions="Center"
+            OnColor="Black"
+            ThumbColor="Gold" />
+        <DatePicker DateSelected="DatePicker_DateSelected" Format="dd \de MMMM \de yyyy" />
+        <TimePicker Format="HH:mm:ss" />
+    </VerticalStackLayout>
+</ContentPage>

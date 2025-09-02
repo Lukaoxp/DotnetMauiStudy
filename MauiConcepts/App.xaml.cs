@@ -1,4 +1,4 @@
-﻿using MauiConcepts.Pages;
+﻿using MauiConcepts.Pages.Controls;
 
 namespace MauiConcepts
 {
@@ -31,7 +31,10 @@ namespace MauiConcepts
             //MainPage = new NavigationPage(new PresentationControlsDemo());
 
             // Command Controls
-            MainPage = new NavigationPage(new CommandControls());
+            //MainPage = new NavigationPage(new CommandControls());
+
+            // Controles que definem valores
+            MainPage = new NavigationPage(new ValueDefiningControls());
         }
     }
 }

@@ -4,25 +4,93 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="CommandControls">
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Button
-            x:Name="BtnDemo"
-            Clicked="BtnDemo_Clicked"
-            HorizontalOptions="Center"
-            Text="Clique para rodar o texto"
-            VerticalOptions="Center" />
-        <Label
-            x:Name="LblDemo"
-            FontSize="20"
-            HorizontalOptions="Center"
-            Text=".Net Maui"
-            TextColor="Blue" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Button
+                x:Name="BtnDemo"
+                Clicked="BtnDemo_Clicked"
+                HorizontalOptions="Center"
+                Text="Clique para rodar o texto"
+                VerticalOptions="Center" />
+            <Label
+                x:Name="LblDemo"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text=".Net Maui"
+                TextColor="Blue" />
 
-        <ImageButton />
-        <RadioButton />
-        <RadioButton />
-        <RadioButton />
-        <SearchBar />
-        <SwipeView />
-    </VerticalStackLayout>
+            <Button
+                x:Name="BtnDemo2"
+                Clicked="BtnDemo_Clicked"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                ImageSource="splash.png"
+                Text="Clique para rodar"
+                VerticalOptions="Center" />
+
+            <ImageButton
+                x:Name="btnImgDemo"
+                Aspect="AspectFit"
+                Clicked="btnImgDemo_Clicked"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="dotnet_bot.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
+
+            <VerticalStackLayout Padding="20">
+                <Label Text="Qual o seu animal favorito?" />
+                <RadioButton
+                    Content="Gato"
+                    GroupName="Pet"
+                    Value="Gato" />
+                <RadioButton
+                    Content="Cachorro"
+                    GroupName="Pet"
+                    Value="Cachorro" />
+                <RadioButton
+                    Content="Galo"
+                    GroupName="Pet"
+                    IsChecked="True"
+                    Value="Galo" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <SearchBar Placeholder="Procurar produto" SearchButtonPressed="SearchBar_SearchButtonPressed" />
+            </VerticalStackLayout>
+
+            <SwipeView Background="LightCoral">
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem
+                            BackgroundColor="LightGreen"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Gato" />
+                        <SwipeItem
+                            BackgroundColor="LightBlue"
+                            Invoked="SwipeItem_Invoked"
+                            Text="Galo" />
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <SwipeView.RightItems>
+                    <SwipeItem
+                        BackgroundColor="LightBlue"
+                        Invoked="SwipeItem_Invoked"
+                        Text="Cachorro" />
+                </SwipeView.RightItems>
+                <SwipeView.BottomItems>
+                    <SwipeItem
+                        BackgroundColor="LightBlue"
+                        Invoked="SwipeItem_Invoked"
+                        Text="Cachorro" />
+                </SwipeView.BottomItems>
+                <Grid HeightRequest="80">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="arraste"
+                        VerticalOptions="Center" />
+                </Grid>
+            </SwipeView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
