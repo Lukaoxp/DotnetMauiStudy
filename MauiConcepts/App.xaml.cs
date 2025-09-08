@@ -34,7 +34,13 @@ namespace MauiConcepts
             //MainPage = new NavigationPage(new CommandControls());
 
             // Controles que definem valores
-            MainPage = new NavigationPage(new ValueDefiningControls());
+            //MainPage = new NavigationPage(new ValueDefiningControls());
+
+            // Controles de edição e atividade
+            //MainPage = new NavigationPage(new EditControls());
+
+            // Controles de coleções
+            MainPage = new NavigationPage(new CollectionControls());
         }
     }
 }

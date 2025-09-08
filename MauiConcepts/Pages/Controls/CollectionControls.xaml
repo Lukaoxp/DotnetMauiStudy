@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiConcepts.Pages.Controls.CollectionControls"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="CollectionControls">
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--<CarouselView IndicatorView="indicator" ItemsSource="{Binding Fotos}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="10"
+                        CornerRadius="5"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
+                        <VerticalStackLayout>
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="200"
+                                Source="{Binding ImagemUrl}"
+                                WidthRequest="200" />
+                            <Label
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                Text="{Binding Nome}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView
+            x:Name="indicator"
+            HorizontalOptions="CenterAndExpand"
+            IndicatorColor="Gray"
+            IndicatorSize="10"
+            IndicatorsShape="Square"
+            SelectedIndicatorColor="Blue"
+            VerticalOptions="Center" />-->
+
+            <!--<ListView
+            x:Name="lv1"
+            ItemsSource="{Binding Fotos}"
+            SeparatorColor="White"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell
+                        ImageSource="{Binding ImagemUrl}"
+                        Text="{Binding Nome}"
+                        TextColor="Black" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+            <!--<CollectionView
+                Margin="10"
+                HorizontalOptions="Center"
+                ItemsSource="{Binding Fotos}"
+                SelectionMode="Multiple"
+                VerticalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Frame Margin="10" CornerRadius="8">
+                                <VerticalStackLayout>
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="100"
+                                        Source="{Binding ImagemUrl}"
+                                        WidthRequest="100" />
+                                    <Label
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Nome}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>-->
+
+            <!--<Picker x:Name="picker" Title="selecione...">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>São paulo</x:String>
+                        <x:String>Paris</x:String>
+                        <x:String>Nova york</x:String>
+                        <x:String>Roma</x:String>
+                        <x:String>Berlim</x:String>
+                        <x:String>Santiago</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>-->
+
+
+            <TableView Intent="Data">
+                <TableRoot>
+                    <TableSection Title="acessorios">
+                        <SwitchCell On="True" Text="AC digital" />
+                        <SwitchCell Text="Alarme perimetrico" />
+                        <SwitchCell Text="Dorecao Hidraulica" />
+                        <SwitchCell Text="Alerta Cinto de segurança" />
+                        <TextCell Text="Valor Total: 65k" />
+                        <EntryCell Placeholder="Informe o seu nome" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
