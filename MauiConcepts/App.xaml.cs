@@ -1,4 +1,4 @@
-﻿using MauiConcepts.Pages.Controls;
+﻿using MauiConcepts.Pages.DataBinding;
 
 namespace MauiConcepts
 {
@@ -40,7 +40,10 @@ namespace MauiConcepts
             //MainPage = new NavigationPage(new EditControls());
 
             // Controles de coleções
-            MainPage = new NavigationPage(new CollectionControls());
+            //MainPage = new NavigationPage(new CollectionControls());
+
+            // DataBinding1
+            MainPage = new NavigationPage(new FirstDataBinding());
         }
     }
 }
