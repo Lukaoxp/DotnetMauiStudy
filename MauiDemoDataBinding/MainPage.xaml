@@ -2,8 +2,15 @@
 <ContentPage
     x:Class="MauiDemoDataBinding.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MauiDemoDataBinding.Models">
+    <ContentPage.BindingContext>
+        <models:Produto
+            x:Name="Produto"
+            Estoque="333"
+            Nome="Teste"
+            Preco="2050.055" />
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -11,14 +18,28 @@
             VerticalOptions="Center">
             <Label
                 x:Name="lblNome"
+                HorizontalOptions="Center"
                 Style="{StaticResource SubHeadline}"
-                Text="Galaxy 5" />
+                Text="{Binding Source={x:Reference Produto}, Path=Nome, StringFormat='Produto: {0}'}"
+                VerticalOptions="Center" />
 
-            <Button
+            <Label
+                x:Name="lblPreco"
+                HorizontalOptions="Center"
+                Text="{Binding Source={x:Reference Produto}, Path=Preco, StringFormat='Preco: R${0:F2}'}"
+                VerticalOptions="Center" />
+
+            <Label
+                x:Name="lblEstoque"
+                HorizontalOptions="Center"
+                Text="{Binding Source={x:Reference Produto}, Path=Estoque, StringFormat='Estoque: {0}'}"
+                VerticalOptions="Center" />
+
+            <!--<Button
                 x:Name="CounterBtn"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill"
-                Text="CLique apra mudar o binding" />
+                Text="CLique apra mudar o binding" />-->
         </VerticalStackLayout>
     </ScrollView>
 
