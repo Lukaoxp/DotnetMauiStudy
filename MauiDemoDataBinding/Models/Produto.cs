@@ -1,9 +1,51 @@
-﻿namespace MauiDemoDataBinding.Models
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace MauiDemoDataBinding.Models
 {
-    public class Produto
+    public class Produto : INotifyPropertyChanged
     {
-        public string Nome { get; set; } = string.Empty;
-        public decimal Preco { get; set; }
-        public int Estoque { get; set; }
+        private string nome = string.Empty;
+
+        public string Nome
+        {
+            get { return nome; }
+            set
+            {
+                nome = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private decimal preco;
+
+        public decimal Preco
+        {
+            get { return preco; }
+            set
+            {
+                preco = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int estoque;
+
+        public int Estoque
+        {
+            get { return estoque; }
+            set
+            {
+                estoque = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
     }
 }
