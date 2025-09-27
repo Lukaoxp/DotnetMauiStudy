@@ -4,23 +4,21 @@ namespace MVVM_Demo.Mvvm.ViewModels
 {
     public partial class CommandViewModel
     {
-        public string SearchTerm { get; set; } = string.Empty;
-
         [RelayCommand]
-        private void ExibirAlerta()
+        public void ButtonClick()
         {
-            App.Current.MainPage.DisplayAlert("Alerta", "Mensagem de alerta", "OK");
+            Alerta("Clique do botão");
         }
 
         [RelayCommand]
-        private void Search(object searchtext)
+        public void Search(string searchTerm)
         {
-            Alerta(searchtext.ToString());
+            Alerta(searchTerm);
         }
 
-        private void Alerta(string? mensagem)
+        public void Alerta(string mensagem)
         {
-            App.Current.MainPage.DisplayAlert("Alerta", mensagem, "OK");
+            App.Current?.MainPage?.DisplayAlert("Alerta", mensagem, "Ok", "Cancel");
         }
     }
 }

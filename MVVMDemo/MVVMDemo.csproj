@@ -64,6 +64,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Mvvm\Views\CommandsView.xaml.cs">
+	    <DependentUpon>CommandsView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Mvvm\Views\CommandsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

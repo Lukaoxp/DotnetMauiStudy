@@ -3,29 +3,36 @@
     x:Class="MVVM_Demo.Mvvm.Views.CommandsView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MVVM_Demo.Mvvm.ViewModels"
     Title="CommandsView">
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label
-            FontAttributes="Bold"
-            FontSize="20"
-            HorizontalOptions="Center"
-            Text="Button : Command"
-            VerticalOptions="Center" />
-        <Button
-            x:Name="BtnAlerta"
-            Command="{Binding ExibirAlertaCommand}"
-            CommandParameter=""
-            Text="Exibir Alerta" />
+    <ContentPage.BindingContext>
+        <vm:CommandViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="50" VerticalOptions="Center">
+        <VerticalStackLayout>
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Botao command"
+                VerticalOptions="Center" />
+            <Button
+                x:Name="btnAlerta"
+                Command="{Binding ButtonClickCommand}"
+                Text="Exibir Alerta" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="SearchBar - Passando parâmetros"
+                VerticalOptions="Center" />
 
-        <Label
-            FontAttributes="Bold"
-            FontSize="20"
-            HorizontalOptions="Center"
-            Text="SearchBar - passando parametros"
-            VerticalOptions="Center" />
-        <SearchBar
-            x:Name="SearchBar"
-            SearchCommand="{Binding SearchCommand}"
-            SearchCommandParameter="{Binding Source={x:Reference SearchBar}, Path=Text}" />
+            <SearchBar
+                x:Name="searchBar"
+                SearchCommand="{Binding SearchCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
