@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiNavigation.Pages.PaginaInicial"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="PaginaInicial">
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        Spacing="30"
+        VerticalOptions="Center">
+        <Button
+            x:Name="NavigateToPage2Button"
+            Clicked="NavigateToPage2Button_Clicked"
+            Text="To Page2" />
+
+        <Button
+            x:Name="AbrirModalButton"
+            Clicked="AbrirModalButton_Clicked"
+            Text="Abrir Modal" />
+    </VerticalStackLayout>
+</ContentPage>

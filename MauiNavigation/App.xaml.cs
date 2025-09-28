@@ -1,6 +1,6 @@
-﻿using MVVM_Demo.Mvvm.Views;
+﻿using MauiNavigation.Pages;
 
-namespace MVVM_Demo
+namespace MauiNavigation
 {
     public partial class App : Application
     {
@@ -8,7 +8,7 @@ namespace MVVM_Demo
         {
             InitializeComponent();
 
-            MainPage = new ViewComVMToolkit();
+            MainPage = new NavigationPage(new PaginaInicial());
         }
     }
 }

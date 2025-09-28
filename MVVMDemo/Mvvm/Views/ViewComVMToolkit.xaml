@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MVVM_Demo.Mvvm.Views.ViewComVMToolkit"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MVVM_Demo.Mvvm.ViewModels"
+    Title="ViewComVMToolkit">
+    <ContentPage.BindingContext>
+        <vm:ComToolkitViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout
+        Padding="10"
+        Spacing="20"
+        VerticalOptions="Center">
+        <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Nome"
+                VerticalTextAlignment="Center" />
+            <Entry
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding Nome}" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Sobrenome"
+                VerticalTextAlignment="Center" />
+            <Entry
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding Sobrenome}" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Rua / numero"
+                VerticalTextAlignment="Center" />
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding Rua}" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Código Postal"
+                VerticalTextAlignment="Center" />
+            <Entry
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding Cep}" />
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Cidade / Estado"
+                VerticalTextAlignment="Center" />
+            <Entry
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding Cidade}" />
+        </Grid>
+
+        <Frame
+            BorderColor="Gray"
+            CornerRadius="50"
+            HasShadow="True">
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                MaxLines="3"
+                Text="{Binding Endereco}"
+                VerticalOptions="End" />
+        </Frame>
+
+        <Button
+            Command="{Binding ImprimirEnderecoCommand}"
+            CommandParameter="{Binding Endereco}"
+            FontSize="20"
+            Text="Imprimir Endereço" />
+    </VerticalStackLayout>
+</ContentPage>
