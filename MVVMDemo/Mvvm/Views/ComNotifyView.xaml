@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MVVM_Demo.Mvvm.Views.ComNotifyView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MVVM_Demo.Mvvm.ViewModels"
+    Title="ComNotifyView">
+    <ContentPage.BindingContext>
+        <vm:ComNotifyViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="20">
+        <Image
+            Aspect="AspectFit"
+            HeightRequest="200"
+            HorizontalOptions="Center"
+            Source="dotnet_bot.png"
+            VerticalOptions="Center"
+            WidthRequest="200" />
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text=".Net Maui MVVM"
+            TextColor="Navy" />
+        <Entry
+            x:Name="CpTexto"
+            Placeholder="Informe o seu nome"
+            PlaceholderColor="DarkGray" />
+        <Button
+            x:Name="btnSaudacao"
+            Command="{Binding ButtonClickCommand}"
+            CommandParameter="{Binding Text, Source={x:Reference CpTexto}}"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Boas Vindas" />
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="{Binding Mensagem}"
+            TextColor="Navy" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -8,7 +8,7 @@ namespace MVVM_Demo
         {
             InitializeComponent();
 
-            MainPage = new CommandsView();
+            MainPage = new ComNotifyView();
         }
     }
 }
