@@ -72,6 +72,12 @@
 	  <MauiXaml Update="Pages\ModalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Page1WithDatabinding.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Page2WithDataBinding.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Pagina2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

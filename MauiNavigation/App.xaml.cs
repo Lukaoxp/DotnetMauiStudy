@@ -9,7 +9,7 @@ namespace MauiNavigation
             InitializeComponent();
 
             //MainPage = new NavigationPage(new PaginaInicial());
-            MainPage = new NavigationPage(new AlunosPage());
+            MainPage = new NavigationPage(new Page1WithDatabinding());
         }
     }
 }
