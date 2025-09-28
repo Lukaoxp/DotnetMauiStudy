@@ -8,7 +8,8 @@ namespace MauiNavigation
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new PaginaInicial());
+            //MainPage = new NavigationPage(new PaginaInicial());
+            MainPage = new NavigationPage(new AlunosPage());
         }
     }
 }
