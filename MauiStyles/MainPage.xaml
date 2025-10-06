@@ -13,18 +13,20 @@
             <Setter Property="Spacing" Value="25" />
         </Style>
 
-        <Style TargetType="Button">
+        <!--<Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource bgcolor}" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="FontSize" Value="Large" />
             <Setter Property="TextColor" Value="{StaticResource textcolor}" />
-        </Style>
+        </Style>-->
     </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
             <Button Text="Log in" />
             <Button Text="Logout" />
 
+            <Button Text="LOGIN" />
+            <Button Text="LOGOUT" />
         </VerticalStackLayout>
     </ScrollView>
 

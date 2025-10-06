@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiStyles.StyleClassPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="StyleClassPage">
+    <ContentPage.Resources>
+        <Style Class="ButtonText" TargetType="Button">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        <Style Class="LightButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+        <Style Class="DarkButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black" />
+            <Setter Property="TextColor" Value="LightGray" />
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout Spacing="30" VerticalOptions="Center">
+        <Button StyleClass="ButtonText, DarkButton" Text="Classes de estilo" />
+        <Button StyleClass="ButtonText, LightButton" Text="Classes de estilo" />
+    </VerticalStackLayout>
+</ContentPage>
