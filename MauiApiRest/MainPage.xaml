@@ -12,8 +12,8 @@
                 <Button Command="{Binding GetCategoriasCommand}" Text="Load" />
                 <Button Command="{Binding GetCategoriaCommand}" Text="Get" />
                 <Button Command="{Binding AddCategoriaCommand}" Text="Add" />
-                <Button Command="{Binding DeleteCategoriaCommand}" Text="Remove" />
                 <Button Command="{Binding UpdateCategoriaCommand}" Text="Update" />
+                <Button Command="{Binding DeleteCategoriaCommand}" Text="Remove" />
             </HorizontalStackLayout>
             <CollectionView
                 x:Name="CVCategorias"
@@ -30,7 +30,7 @@
                             Shadow="5"
                             StrokeShape="RoundRectangle 10">
                             <Grid RowDefinitions="Auto,180,Auto">
-                                <Label HorizontalTextAlignment="End" Text="{Binding Id}" />
+                                <Label HorizontalTextAlignment="End" Text="{Binding CategoriaId}" />
                                 <Image
                                     Grid.Row="1"
                                     Aspect="AspectFit"
