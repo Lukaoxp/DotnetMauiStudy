@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApiRest.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="5">
+            <Entry Placeholder="Categoria Id" Text="{Binding CategoriaInfoId}" />
+            <Entry Placeholder="Categoria Nome" Text="{Binding CategoriaInfoNome}" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Command="{Binding GetCategoriasCommand}" Text="Load" />
+                <Button Command="{Binding GetCategoriaCommand}" Text="Get" />
+                <Button Command="{Binding AddCategoriaCommand}" Text="Add" />
+                <Button Command="{Binding DeleteCategoriaCommand}" Text="Remove" />
+                <Button Command="{Binding UpdateCategoriaCommand}" Text="Update" />
+            </HorizontalStackLayout>
+            <CollectionView
+                x:Name="CVCategorias"
+                EmptyView="Nenhum item encontrado"
+                ItemsSource="{Binding Categorias}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="5"
+                            Padding="10"
+                            Shadow="5"
+                            StrokeShape="RoundRectangle 10">
+                            <Grid RowDefinitions="Auto,180,Auto">
+                                <Label HorizontalTextAlignment="End" Text="{Binding Id}" />
+                                <Image
+                                    Grid.Row="1"
+                                    Aspect="AspectFit"
+                                    Source="{Binding ImagemUrl}" />
+                                <Label
+                                    Grid.Row="2"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Nome}"
+                                    TextColor="Magenta" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
