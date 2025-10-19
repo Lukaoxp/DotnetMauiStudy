@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiCollectionView.MVVM.Views.ContatosView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MauiCollectionView.MVVM.Models"
+    xmlns:vm="clr-namespace:MauiCollectionView.MVVM.ViewModels"
+    Title="ContatosView">
+    <Grid RowDefinitions=".1*, .9*">
+        <Button
+            Grid.Row="0"
+            Margin="10"
+            Clicked="Button_Clicked"
+            Text="Rolar para" />
+        <CollectionView
+            x:Name="cv1"
+            Grid.Row="1"
+            IsGrouped="True"
+            ItemsSource="{Binding ContatosAgrupados}"
+            Scrolled="CollectionView_Scrolled">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label
+                        BackgroundColor="{StaticResource Primary}"
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Nome}"
+                        TextColor="White" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.GroupFooterTemplate>
+                <DataTemplate>
+                    <Label
+                        Margin="0,0,0,10"
+                        BackgroundColor="AliceBlue"
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Count, StringFormat='Total de contatos: {0:D}'}"
+                        TextColor="Black" />
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Contato">
+                    <VerticalStackLayout Margin="20,0,0,0">
+                        <Label FontSize="Large" Text="{Binding Nome}" />
+                        <Label
+                            FontAttributes="Bold"
+                            Text="{Binding Email}"
+                            TextColor="Blue" />
+                        <Label FontAttributes="Bold" Text="{Binding Telefone}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
