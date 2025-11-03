@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiSQLite.MVVM.Views.AgendaView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MauiSQLite.MVVM.ViewModels"
+    x:Name="AgendaPage"
+    Title="AgendaView">
+    <Grid Padding="10" RowDefinitions=".3*,.9*">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Margin="5"
+            Padding="10">
+            <Entry
+                x:Name="txtNome"
+                Placeholder="Nome"
+                Text="{Binding ContatoAtual.Nome, Mode=TwoWay}" />
+            <Entry
+                x:Name="txtEmail"
+                Placeholder="Email"
+                Text="{Binding ContatoAtual.Email, Mode=TwoWay}" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button
+                    BackgroundColor="Blue"
+                    Command="{Binding AddCommand}"
+                    FontAttributes="Bold"
+                    Text="Incluir" />
+                <Button
+                    BackgroundColor="Green"
+                    Command="{Binding UpdateCommand}"
+                    FontAttributes="Bold"
+                    Text="Alterar" />
+                <Button
+                    BackgroundColor="Black"
+                    Command="{Binding DisplayCommand}"
+                    FontAttributes="Bold"
+                    Text="Carregar" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding Contatos}"
+            SelectedItem="{Binding ContatoAtual}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="Purple"
+                                    Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:AgendaViewModel}}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Excluir" />
+
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid ColumnDefinitions=".4*, .6*">
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Nome}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="15"
+                                Text="{Binding Email}"
+                                TextColor="Blue"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
